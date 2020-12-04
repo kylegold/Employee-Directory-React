@@ -3,7 +3,17 @@ import axios from "axios"
 
 const Employee = () => {
   return(
-    console.log("employee")
+    <ul style={{color: "white", width:"100%", margin: "0px auto", display: "flex", justifyContent: "space-around"}}>
+    <li>
+      First Name
+    </li>
+    <li>
+      Last Name
+    </li>
+      <li>
+        Title
+      </li>
+  </ul>
   )
 }
 
