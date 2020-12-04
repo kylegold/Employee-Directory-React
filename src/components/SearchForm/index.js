@@ -1,8 +1,12 @@
 import React from "react"
 
-const SearchForm = () => {
+const SearchForm = (props) => {
   return (
-    <p> searchForm </p>
+    <form> 
+      <label>Search Employee Directory</label>
+      <input type="text" onChange={props.handleInputChange}></input>
+      <button type="submit">Search</button>
+    </form>
   )
 }
 
