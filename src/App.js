@@ -8,16 +8,20 @@ import axios from "axios"
 
 function App() {
   const [search, setSearch] = useState("")
+  const [users, setUsers] = useState([])
+  const [filtered, setFiltered] = useState([])
 
-  useEffect(() => {
-    axios.get("https://randomuser.me/api/?results=20").then((req) => {
-      console.log(req)
-    })
-  })
+  // useEffect(() => {
+  //   axios.get("https://randomuser.me/api/?results=20").then((req) => {
+  //     console.log(req)
+  //   })
+  // })
 
   const handleInputChange = (e) => {
    const value = e.target.value
-   console.log(value)
+   const name = e.target.name
+   setSearch({...search, value})
+   console.log(value, name)
   }
 
   return (

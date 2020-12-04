@@ -1,7 +1,7 @@
-import axios from "axios"
+// import axios from "axios"
 
-export default  {
-  getUsers: function() {
-    return axios.get("https://randomuser.me/api/");
-  }
-};
+// export default  {
+//   getUsers: function() {
+//     return axios.get("https://randomuser.me/api/");
+//   }
+// };
