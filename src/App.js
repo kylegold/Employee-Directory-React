@@ -9,6 +9,12 @@ import axios from "axios"
 function App() {
   const [search, setSearch] = useState("")
 
+  useEffect(() => {
+    axios.get("https://randomuser.me/api/?results=20").then((req) => {
+      console.log(req)
+    })
+  })
+
   const handleInputChange = (e) => {
    const value = e.target.value
    console.log(value)
