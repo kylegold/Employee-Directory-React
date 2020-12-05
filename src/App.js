@@ -15,10 +15,10 @@ function App() {
     axios.get("https://randomuser.me/api/?results=20").then((req) => {
       console.log(req.data.results)
        const users = req.data.results
-      setUsers({...users, users})
+       setUsers({...users})
     })
    
-  })
+  }, [])
 
   const handleInputChange = (e) => {
    const value = e.target.value
