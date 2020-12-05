@@ -11,11 +11,14 @@ function App() {
   const [users, setUsers] = useState([])
   const [filtered, setFiltered] = useState([])
 
-  // useEffect(() => {
-  //   axios.get("https://randomuser.me/api/?results=20").then((req) => {
-  //     console.log(req)
-  //   })
-  // })
+  useEffect(() => {
+    axios.get("https://randomuser.me/api/?results=20").then((req) => {
+      console.log(req.data.results)
+       const users = req.data.results
+      setUsers({...users, users})
+    })
+   
+  })
 
   const handleInputChange = (e) => {
    const value = e.target.value
