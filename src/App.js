@@ -13,9 +13,9 @@ function App() {
 
   useEffect(() => {
     axios.get("https://randomuser.me/api/?results=20").then((req) => {
-      console.log(req.data.results)
-       const users = req.data.results
-       setUsers({...users})
+      // console.log(req.data.results)
+       setUsers({...users, users: req.data.results})
+       console.log(users)
     })
    
   }, [])
@@ -31,7 +31,7 @@ function App() {
     <div className="App">
   <Nav />
   <SearchForm handleInputChange={handleInputChange}/>
-  <EmployeeTable/>
+  <EmployeeTable users={users}/>
     </div>
   );
 }
