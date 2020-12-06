@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Nav from "./components/Nav/"
 import EmployeeTable from "./components/EmployeeTable/"
@@ -14,7 +14,8 @@ function App() {
   useEffect(() => {
     axios.get("https://randomuser.me/api/?results=20").then((req) => {
       // console.log(req.data.results)
-       setUsers({...users, users: req.data.results})
+       setUsers(req.data.results)
+       setFiltered(req.data.results)
        console.log(users)
     })
    
@@ -23,7 +24,12 @@ function App() {
   const handleInputChange = (e) => {
    const value = e.target.value
    const name = e.target.name
-   setSearch({...search, value})
+   setSearch(value);
+   const filter = users.filter(user => {
+    return (user.name.title + " " + user.name.first + " " + user.name.last).toLowerCase().search(
+      value) !== -1;
+  });
+  setFiltered(filter)
    console.log(value, name)
   }
 
@@ -31,7 +37,7 @@ function App() {
     <div className="App">
   <Nav />
   <SearchForm handleInputChange={handleInputChange}/>
-  <EmployeeTable users={users}/>
+  <EmployeeTable users={filtered}/>
     </div>
   );
 }
