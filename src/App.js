@@ -33,10 +33,28 @@ function App() {
    console.log(value, name)
   }
 
+  const handleSortButton = (e) => {
+    e.preventDefault()
+    // const value = e.target.value
+    const name = e.target.name
+    switch(name) {
+      case "first": 
+        return console.log("sort first name")
+      case "last": 
+        return console.log("sort last name")
+      case "title": 
+        return console.log("sort title name")
+
+        default: 
+        return console.log("default")
+        
+      }
+    }
+
   return (
     <div className="App">
   <Nav />
-  <SearchForm handleInputChange={handleInputChange}/>
+  <SearchForm handleInputChange={handleInputChange} handleSortButton={handleSortButton}/>
   <EmployeeTable users={filtered}/>
     </div>
   );
