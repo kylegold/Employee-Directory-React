@@ -10,6 +10,7 @@ function App() {
   const [search, setSearch] = useState("")
   const [users, setUsers] = useState([])
   const [filtered, setFiltered] = useState([])
+  // let sorted = []
 
   useEffect(() => {
     axios.get("https://randomuser.me/api/?results=20").then((req) => {
@@ -33,18 +34,59 @@ function App() {
    console.log(value, name)
   }
 
+
   const handleSortButton = (e) => {
     e.preventDefault()
     // const value = e.target.value
     const name = e.target.name
+    
     switch(name) {
       case "first": 
-        return console.log("sort first name")
+      const sortedFirst = filtered.sort((a,b)=> {
+        if (a.name.first < b.name.first) {
+          return -1;
+        }
+        if (a.name.first > b.name.first) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0; 
+      })
+     console.log("sorted filter first", sortedFirst)
+      setFiltered(sortedFirst)
+      break;
       case "last": 
-        return console.log("sort last name")
-      case "title": 
-        return console.log("sort title name")
+      const sortedLast = filtered.sort((a,b)=> {
+        if (a.name.last < b.name.last) {
+          return -1;
+        }
+        if (a.name.last > b.name.last) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0; 
+      })
+     console.log("sorted filter last", sortedLast)
+      setFiltered(sortedLast)
+         break;
 
+         case "title":  
+         const sortedTitle = filtered.sort((a,b)=> {
+          if (a.name.title < b.name.title) {
+            return -1;
+          }
+          if (a.name.title > b.name.title) {
+            return 1;
+          }
+        
+          // names must be equal
+          return 0; 
+        })
+       console.log("sorted filter title", sortedTitle)
+       setFiltered(sortedTitle)
+         break;
         default: 
         return console.log("default")
         
